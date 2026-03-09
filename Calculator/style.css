@@ -1,0 +1,45 @@
+body{
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+  position: absolute;
+  top: 20%;
+  left: 40%;
+}
+
+.type1{
+  background-color: #333333;
+  padding: 19px 24px;
+  border-radius: 90px;
+  border: none;
+  font-weight: bold;
+  font-size: larger;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.type2{
+  background-color: #FEA00A;
+  padding: 19px 24px;
+  border-radius: 90px;
+  border: none;
+  font-weight: bold;
+  font-size: larger;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.line{
+  background-color: white;
+  height: 1px;
+}
+
+.result{
+  margin: 8px 0px;
+  color: white;
+  font-size: larger;
+}
