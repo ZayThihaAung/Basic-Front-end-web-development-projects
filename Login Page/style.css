@@ -1,0 +1,315 @@
+.MainContainer{
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 800px;
+}
+
+.Main{
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  opacity: 0.9;
+  height: 100px;
+  align-items: center;
+  border-bottom: 0.4px solid lightgray;
+  background-color: #f6f6f6;
+}
+/*chruegwut5r4yhgtuy48y*/
+.body{
+  margin: 0;
+  padding: 0
+}
+
+.Header{
+  margin-bottom: 30px;
+}
+
+.Text{
+  margin-bottom: 20px;
+}
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Fotter{
+  text-align: center;
+  background-color: #f6f6f6;
+  width: 91%;
+  padding: 50px;
+  margin-top: 70px;
+  font: 800;
+  font-size: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Fotter2{
+  padding: 50px;
+  position: relative;
+  border: 1px solid black;
+}
+
+.Advice{
+  padding: 2px;
+  width: 300px;
+  height: 30px;
+  transition: width 2s;
+}
+
+.Advice:focus{
+  width: 400px;    
+}
+
+.logocontainer{
+  height: 50px;
+  width: 50px;
+}
+
+.logo{
+  width: 100%;
+}
+
+.put1:focus{
+  width: 300px;
+  border: 1px solid;
+}
+
+.put1{
+  border: none;
+  width: 100px;
+  height: 25px;
+  outline: cadetblue;
+  border-radius: 8px;
+  display: block;
+  margin: 10px 0px;
+  padding: 4px 8px;
+  background-color: #f6f6f6;
+  transition: width 2s;
+}
+
+.left{
+  display: inline-block;
+  width: 50%;
+}
+
+.right{
+  display: inline-block;
+  width: 50%;
+}
+
+.inner{
+  width: 50%;
+}
+
+.rightimg{
+  width: 110%;
+}
+.button{
+  display: block;
+  background-color: yellow;
+  border-radius: 12px;
+  border: none;
+  font-style: oblique;
+  padding: 9px 13px;
+  margin: 20px 0px;
+  height: 30px;
+}
+
+.Password{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
+
+.appimg{
+  width: 50%;
+}
+
+.VIP{
+  text-decoration: none;
+  color: inherit;
+  margin-right: 40px;
+  font-size: 20px;
+}
+
+.VIP:hover{
+  text-decoration: underline;
+}
+
+/*Mobile Menu*/
+
+.hamburgerMenuContainer{
+  position: absolute;
+  right: 90px;
+  display: block;
+}
+
+.hamburger {
+  width: 45px;
+  height: 4px;
+  background-color: #444;
+  margin: 5px 0px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.line1 {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.line2{
+  opacity: 0;
+}
+
+.line3{
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.footer{
+  background-color: #f6f6f6;
+  padding: 10px 30px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.columcontainer{
+  max-width: 16cm;
+  display: flex;
+  margin: 0;
+}
+
+.colum{
+  width: 390px;
+  margin: 15px;
+}
+
+.box{
+  padding: 20px;
+  height: 350px;
+  width: 300px;
+  background-color: #f6f6f6;
+  border-radius: 30px;
+}
+
+.imgcontainer{
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.boximg{
+  width: 100%;
+}
+
+.textcontainer{
+  text-align: center;
+  margin-left: 6px;
+  margin-right: 10px;
+}
+
+.title{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.Para{
+  opacity: 0.7;
+}
+
+@media (max-width:600px) {
+  .VIP{
+      display: none;
+  }
+
+  .hamburgerMenuContainer{
+      display: block;
+  }
+
+  .mobilemenucontainer{
+      display: block;
+  }
+
+  .left{
+      width: 100%;
+      margin-bottom: 30px;
+  }
+
+  .right{
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+  }
+
+  .rightimg{
+      margin: 0 -40%;
+  }
+
+  .inner{
+      width: 60%;
+      margin: 0 auto;
+  }
+
+  .Fotter{
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px;
+  }
+
+  .columcontainer{
+      flex-wrap: wrap;
+  }
+}
+
+@media (max-width:500px){
+
+
+  .inner{
+      width: 75%;
+  }
+
+  .logocontainer{
+      margin-left: 2px;
+  }
+  
+  .Fotter{
+      margin-top: 20px;
+  }
+
+  .put1{
+      width: 250px;
+  }
+
+  .columcontainer{
+      flex-wrap: wrap;
+  }
+  
+.box{
+  height: 370px; 
+}
+}
+
+@media (max-width:300px){
+  .put1{
+      width: 200px;
+  }
+
+  .inner{
+      width: 86%;
+  }
+ 
+  .Fotter{
+      margin-top: 10px;
+      font-size: 20px;
+      padding: 10px;
+  }
+
+  .columcontainer{
+      flex-wrap: wrap;
+  }
+  
+   .box{
+  height: 370px; 
+}
+}
