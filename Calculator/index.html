@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2 class="result"></h2>
+    <div class="line"></div>
+    <p>
+      <button class="type1" onclick="calculate('1')">1</button>
+      <button class="type1" onclick="calculate('2')">2</button>
+      <button class="type1" onclick="calculate('3')">3</button>
+      <button class="type2" onclick="calculate(' + ')">+</button>
+    </p>
+    <p>
+      <button class="type1" onclick="calculate('2')">4</button>
+      <button class="type1" onclick="calculate('2')">5</button>
+      <button class="type1" onclick="calculate('6')">6</button>
+      <button class="type2" onclick="calculate(' - ')">-</button>
+    </p>
+    <p>
+      <button class="type1" onclick="calculate('7')">7</button>
+      <button class="type1" onclick="calculate('8')">8</button>
+      <button class="type1" onclick="calculate('9')">9</button>
+      <button class="type2" onclick="calculate(' * ')">*</button>
+    </p>
+    <p>
+      <button class="type1" onclick="calculate('0')">0</button>
+      <button class="type1" onclick="calculate(' . ')">.</button>
+      <button class="type1" onclick="calculate('')">=</button>
+      <button class="type2" onclick="calculate(' / ')">/</button>
+    </p>
+    <button class="type1" onclick="calculate('clear')">Clear</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
