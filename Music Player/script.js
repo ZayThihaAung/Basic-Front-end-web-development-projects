@@ -28,8 +28,6 @@ const tracks = [
     trackImg : "https://i.ytimg.com/vi/QMQTf4hMc5A/maxresdefault.jpg"},
     { trackId : "Musics for the player/videoplayback.mp4", title : "သည်းခံ By Big Bang",
     trackImg : "https://i.ytimg.com/vi/TSQ09Lyv3GI/mqdefault.jpg"},
-    { trackId : "Musics for the player/နာရီမိနစ် စက္ကန့်မလစ် -(cover by sin pauk).mp4", title : "နာရီမိနစ် စက္ကန့်မလစ် -(cover by sin pauk)",
-    trackImg : "https://i.ytimg.com/vi/mJV1Irwoky4/maxresdefault.jpg"},
     { trackId : "Musics for the player/human.mp4", title : "Human By Rag'n'Bone",
     trackImg : "https://upload.wikimedia.org/wikipedia/en/a/a8/Human_-_Rag%27n%27Bone_Man_Single.png"},
     { trackId : "Musics for the player/hill.mp4", title : "Hill By The Weekend",
@@ -54,7 +52,6 @@ for (let i =0; i<tracks.length; i++){
     trackTag.addEventListener('click', () => {
         currentPlayingIndex =i
         playSong()
-        // console.log(audioTag.duration)// NaN
     });
     trackTag.classList.add('trackIteam');
     const title = (i+ 1).toString() + '. ' + tracks[i].title
@@ -66,18 +63,8 @@ for (let i =0; i<tracks.length; i++){
 let duration =0
 let durationText = "00:00" // bc timeupdate function wanna use this
 audioTag.addEventListener('loadeddata', () => {
-   // console.log('Song duration is :', audioTag.duration)// returns seconds and millisecons
     duration = Math.floor(audioTag.duration);
     durationText = creatMinutesAndSecondText(duration);
-    //console.log("Total duration of current playing song:",creatMinutesAndSecondText(duration));
-    /*
-    const minutes = Math.floor(duration/60);
-    const seconds = duration%60;
-    don't need this anymore bc it's aginest to DRY  
-    const minutesText = minutes < 10 ? '0' + minutes.toString() : minutes;
-    const secondText = seconds < 10 ? '0' + seconds.toString() : seconds;
-    */
-   // console.log(minutesText + ':' + secondText)
 });
 
 audioTag.addEventListener("timeupdate", () => {
@@ -86,19 +73,6 @@ audioTag.addEventListener("timeupdate", () => {
     const currentTimeTextAndDurationText = currentTimeText + " / " + durationText;
     currentAndTotalTimeTag.textContent = currentTimeTextAndDurationText
     updateCurrentProgress(currentTime)
-    /* console.log(
-        "currentTimeTextAndDurationText: ",
-        currentTimeTextAndDurationText
-    )*/
-    //console.log(" Played time :",creatMinutesAndSecondText(currentTime));
-    /*
-    const minutes = Math.floor(currentTime/60);
-    const seconds = currentTime%60;
-     don't need this anymore bc it's aginest to DRY 
-    const minutesText = minutes < 10 ? "0" + minutes.toString() : minutes;
-    const secondText = seconds < 10 ? "0" + seconds.toString() : seconds;
-    console.log(minutesText + ":" + secondText);
-    */
 });
 
 const updateCurrentProgress= (currentTime) => {
@@ -167,5 +141,6 @@ const updatePlayAndPauseButton= () => {
         pauseButtonTag.style.display = "none"
     }
 }
+
 
 console.log("Hello world");
