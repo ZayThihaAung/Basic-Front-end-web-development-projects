@@ -43,3 +43,9 @@ body{
   color: white;
   font-size: larger;
 }
+
+@media (width <= 600px) {
+  .container{
+    left: 16%;
+  }
+}
