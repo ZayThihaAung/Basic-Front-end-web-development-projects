@@ -112,8 +112,17 @@ body{
     color: #444;
 }
 
-@media (width = 800px) {
+@media (width <= 800px) {
     #progressBar {
         width: 40px;
+    }
+    .menuContainer{
+        width: 700px;
+    }
+}
+
+@media (width <= 500px) {
+    .menuContainer{
+        width: 420px;
     }
 }
