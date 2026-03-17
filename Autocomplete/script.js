@@ -1,76 +1,120 @@
-// Stop Watch
+import {products} from "./products.js";
+const inputTag = document.getElementsByClassName("autoCompleteInput")[0];
+const resultContainerTag =  document.getElementsByClassName("resultContainer")[0];
+const enteredProductTag = document.getElementsByClassName("enteredProduct")[0]
 
-const stopWatchTag = document.getElementsByClassName('stopWatch')[0];
-const milisecondTag = document.getElementsByClassName('milisecondTag')[0];
-const startButtonTag = document.getElementsByClassName('startButton')[0];
-const pauseButtonTag = document.getElementsByClassName('pauseButton')[0];
-const continueButtonTag = document.getElementsByClassName('continueButton')[0];
-const restartButtonTag = document.getElementsByClassName('restartButton')[0];
+let searchedText = ""
+let filteredProducts = [];
+inputTag.addEventListener("keyup", (event) => {
+  if (
+    event.key === "ArrowDown" ||
+    event.key === "ArrowUp" ||
+    event.key === "Enter"
+  ) {
+    navigateAndSelectProduct(event.key);
+    return
 
-let seconds = 0, minutes = 0, hours = 0, milliseconds = 0// u can declare if u have to declare multiple
-// variable to declare with let 
-
-// increasing seconds, minutes and hours
-// setInterval method (it's a window method)
-/*
-The setInterval() method calls a function at specified intervals (in milliseconds).
-The setInterval() method continues calling the function until clearInterval() is called, or the window is closed.
-1 second = 1000 milliseconds.
-*/
-
-const startTime = () => {
-    milliseconds += 1000
-    if(milliseconds === 10000){
-        milliseconds =0
+  }
+   //console.log("Key passed..", event.key)
+    resultContainerTag.innerHTML = "";
+     searchedText = event.target.value.toLowerCase();
+    //console.log("Customers Searched is :", searchedText);
+    if (searchedText.length === 0){
+      return
     }
-    seconds+= 1;
-    if(seconds===60){
-        seconds =0
-        minutes+=1
-    }else if(minutes===60){
-        minutes =0;
-        hours+= 1
+    filteredProducts = products.filter(product => {
+       return product.title.toLowerCase().includes(searchedText);
+    })
+    const hasProductsToShow = filteredProducts.length> 0;
+    if (hasProductsToShow) {
+        for (let i = 0; i< filteredProducts.length; i++){
+            const productIteamContainer = document.createElement('div');
+            productIteamContainer.id = filteredProducts[i].id;
+            productIteamContainer.classList.add("productIteamContainer");
+
+            const productName = document.createElement("div");
+            productName.classList.add("productName");
+            productName.append(filteredProducts[i].title);
+
+            const productImage = document.createElement("img");
+            productImage.classList.add("productImage");
+            productImage.src= filteredProducts[i].image;
+
+            productIteamContainer.append(productImage, productName);
+            resultContainerTag.append(productIteamContainer);
+
+        }
     }
-
-    // Ternary Opreator
-    const secondText = seconds < 10 ? "0" + seconds.toString() : seconds;
-    const minutesText = minutes < 10 ? "0" + minutes.toString() : minutes;
-    const hourText = hours < 10 ? "0" + hours.toString() : hours;
-    const millisecondsText = milliseconds < 1000 ? '0' + milliseconds.toString() : milliseconds;
-    // The textContent property sets or returns the text content of the specified node, and all its descendants.
-    stopWatchTag.textContent= hourText + ':' + minutesText + ':' + secondText 
-    milisecondTag.textContent =   millisecondsText
-}
-/*Ternary Operator
-The ternary operator is a simplified conditional operator like if / else.
-Syntax: condition ? <expression if true> : <expression if false>
-Here is an example using if / else:*/
-
-// setInterval(callback, 1000)
-
-// clearInterval method (it's also window meathod)
-// The clearInterval() method clears a timer set with the setInterval() method.
-// to stop setInterval
-
-// let intervalId = setInterval(startTime, 1000);
-// clearInterval(intervalId);
-
-let intervalId
-startButtonTag.addEventListener('click', () => {
-    intervalId = setInterval(startTime, 1000, startTime, 1)
-})
-
-pauseButtonTag.addEventListener('click', () => {
-    clearInterval(intervalId)
-})
-
-continueButtonTag.addEventListener('click', ()=> {
-    clearInterval(intervalId) // add this plz bc you'll see if u press continue button when the time is running 
-    intervalId = setInterval(startTime, 1000)
 });
 
-restartButtonTag.addEventListener('click', ()=> {
-    clearInterval(intervalId)
-    seconds =0, minutes =0, hours=0 , milliseconds =0// don't forget comma 
-    intervalId = setInterval(startTime, 1000)
-})
+const deselectProduct = () => {
+  const productToDeselect = document.querySelectorAll(".selected");
+  productToDeselect.forEach((product) => {
+    product.style.backgroundColor = "white";
+    product.classList.remove("selected");
+  });
+};
+
+const selectedProduct = (index) => {
+  const productIdToSelect = filteredProducts[index].id.toString()
+  let productIteamContainerToSelect =document.getElementById(
+    productIdToSelect
+  );
+  productIteamContainerToSelect.style.backgroundColor ="gray";
+  return productIteamContainerToSelect
+}
+
+let indexToSelect = -1
+const navigateAndSelectProduct = (key) => {
+  if (key === "ArrowDown"){
+    if (indexToSelect === filteredProducts.length -1){
+      indexToSelect = -1;
+      deselectProduct()
+      console.log("indexToSelect before +1: ", indexToSelect)
+      return
+    }
+    indexToSelect += 1;
+    console.log('indexToSelect after +1', indexToSelect)
+    let productIteamContainerToSelect = selectedProduct(indexToSelect)
+    if (indexToSelect > 0){
+      deselectProduct();
+      console.log("passed");
+    }
+    productIteamContainerToSelect.classList.add('selected');
+    //console.log(productIteamContainerToSelect)
+    //console.log(productIdToSelect)
+  }else if(key === "ArrowUp"){
+    if (indexToSelect === -1){
+      indexToSelect = filteredProducts.length - 1;
+      const productItemContainerToSelect = selectedProduct(indexToSelect);
+      productItemContainerToSelect.classList.add('selected');
+      return
+    }
+
+    if (indexToSelect === 0) {
+      deselectProduct()
+      indexToSelect = -1
+      console.log(indexToSelect)
+      return
+    }
+    
+    indexToSelect -=1;
+    deselectProduct()
+    const productIteamContainerToSelect =selectedProduct(indexToSelect)
+    productIteamContainerToSelect.classList.add("selected")
+    console.log("Arrow up indexToSelect value now : ",indexToSelect)
+  } else {
+    const enteredProduct = selectedProduct(indexToSelect)
+    console.log("entered product", enteredProduct)
+    resultContainerTag.innerHTML="";
+    enteredProduct.style.backgroundColor = "lightBlue"
+    enteredProductTag.classList.add("enteredProduct")
+    enteredProductTag.append(enteredProduct)
+    enteredProductTag.style.display = "block"
+    indexToSelect = -1
+    if (searchedText.length === 0){
+      productIteamContainer.innerHTML ="";
+      enteredProductTag.style.display = "none"
+    }
+  }
+}
